@@ -59,69 +59,7 @@ Finally, the system displays the eligible students in rank order and identifies 
 
 **Step 10:** Stop the program.
 
-## 3. Flowchart
 
-The flowchart below shows the complete process of the University Scholarship Allocation System.
-
-```text
-          ┌───────────────┐
-          │     START     │
-          └───────┬───────┘
-                  │
-                  ▼
-       ┌──────────────────────┐
-       │ Enter Number of      │
-       │ Student Applicants   │
-       └──────────┬───────────┘
-                  │
-                  ▼
-       ┌──────────────────────┐
-       │ Enter Student Details│
-       │ Marks, Subjects,     │
-       │ Attendance, Income   │
-       └──────────┬───────────┘
-                  │
-                  ▼
-       ◇──────────────────────◇
-      /  Check All Eligibility  \
-     /        Criteria?         \
-     ◇───────────┬──────────────◇
-          YES    │       NO
-           │     │        │
-           ▼     │        ▼
-   ┌───────────────┐  ┌────────────────┐
-   │ Add Student   │  │ Record Student │
-   │ to Eligible   │  │ as Ineligible  │
-   │ List          │  │ with Reason    │
-   └───────┬───────┘  └───────┬────────┘
-           │                  │
-           └────────┬─────────┘
-                    │
-                    ▼
-         ◇──────────────────◇
-        / All Students       \
-       / Processed?           \
-       ◇─────────┬────────────◇
-            NO   │    YES
-             │   │      │
-             └───┘      ▼
-                ┌──────────────────┐
-                │ Rank Eligible    │
-                │ Students         │
-                └────────┬─────────┘
-                         │
-                         ▼
-                ┌──────────────────┐
-                │ Display Rankings │
-                │ and Rejection    │
-                │ Reasons          │
-                └────────┬─────────┘
-                         │
-                         ▼
-                  ┌─────────────┐
-                  │     STOP    │
-                  └─────────────┘
-```
 ## 5. Sample Input
 
 Consider three students: Ravi, Sita, and Arjun.
@@ -188,7 +126,51 @@ Reasons:
 - **Arjun is ineligible** because his aggregate marks are below 75%.
 
 Both Sita and Ravi satisfy the subject-wise minimum marks, attendance, and income criteria.
+
 ---
+## 7.Mermaid Flowchart Code
+'''mermaid
+          flowchart TD
+    A([Start]) --> B[/Input production quantity, material cost, wastage percentage, labour cost, machine cost, selling price and target profit/]
+
+    B --> C{Quantity greater than zero and all inputs non-negative?}
+
+    C -- No --> D[Display invalid input message]
+    D --> Z([Stop])
+
+    C -- Yes --> E[Calculate total material cost]
+    E --> F[Calculate wastage cost]
+    F --> G[Calculate labour and machine costs]
+    G --> H[Calculate total manufacturing cost]
+    H --> I[Calculate cost per unit]
+    I --> J[Calculate total sales revenue]
+    J --> K[Calculate total profit]
+    K --> L[Calculate profit percentage]
+
+    L --> M{Profit percentage >= target profit?}
+
+    M -- Yes --> N[Display Profit Target Achieved]
+    M -- No --> O[Display Profit Target Not Achieved]
+
+    N --> P[Display all cost and profitability details]
+    O --> P
+
+    P --> Q{Profit less than zero?}
+    Q -- Yes --> R[Display loss warning]
+    Q -- No --> S[Display normal profitability result]
+
+    R --> Z
+    S --> Z
+
+    style A fill:#d4edda,stroke:#28a745
+    style Z fill:#d4edda,stroke:#28a745
+    style C fill:#fff3cd,stroke:#ffc107
+    style M fill:#fff3cd,stroke:#ffc107
+    style H fill:#cce5ff,stroke:#007bff
+    style K fill:#cce5ff,stroke:#007bff
+    style N fill:#d4edda,stroke:#28a745
+    style O fill:#f8d7da,stroke:#dc3545
+    '''
 ## 8. Conclusion
 
 The University Scholarship Allocation System automates the process of evaluating student scholarship applications. It checks eligibility using aggregate marks, subject-wise minimum marks, attendance, and family income. It ranks eligible students using predefined tie-breaking rules and explains why other applicants are ineligible. This system reduces manual work, improves consistency, and makes scholarship allocation easier to manage.
