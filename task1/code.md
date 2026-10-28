@@ -129,48 +129,37 @@ Both Sita and Ravi satisfy the subject-wise minimum marks, attendance, and incom
 
 ---
 ## 7.Mermaid Flowchart Code
-'''mermaid
-          flowchart TD
-    A([Start]) --> B[/Input production quantity, material cost, wastage percentage, labour cost, machine cost, selling price and target profit/]
+```mermaid
+flowchart TD
+    A([Start]) --> B[/Enter Number of Students/]
+    B --> C[/Enter Name, Subject Marks, Attendance and Income/]
+    C --> D[Calculate Aggregate Percentage]
 
-    B --> C{Quantity greater than zero and all inputs non-negative?}
+    D --> E{Aggregate >= 75%?}
+    E -- No --> N[Not Eligible]
+    E -- Yes --> F{All Subject Marks >= 40?}
 
-    C -- No --> D[Display invalid input message]
-    D --> Z([Stop])
+    F -- No --> N
+    F -- Yes --> G{Attendance >= 75%?}
 
-    C -- Yes --> E[Calculate total material cost]
-    E --> F[Calculate wastage cost]
-    F --> G[Calculate labour and machine costs]
-    G --> H[Calculate total manufacturing cost]
-    H --> I[Calculate cost per unit]
-    I --> J[Calculate total sales revenue]
-    J --> K[Calculate total profit]
-    K --> L[Calculate profit percentage]
+    G -- No --> N
+    G -- Yes --> H{Family Income <= 250000?}
 
-    L --> M{Profit percentage >= target profit?}
+    H -- No --> N
+    H -- Yes --> I[Eligible]
 
-    M -- Yes --> N[Display Profit Target Achieved]
-    M -- No --> O[Display Profit Target Not Achieved]
+    I --> J[Collect Eligible Students]
+    N --> K{More Students?}
+    J --> K
 
-    N --> P[Display all cost and profitability details]
-    O --> P
+    K -- Yes --> C
+    K -- No --> L[Rank by Aggregate Marks]
 
-    P --> Q{Profit less than zero?}
-    Q -- Yes --> R[Display loss warning]
-    Q -- No --> S[Display normal profitability result]
-
-    R --> Z
-    S --> Z
-
-    style A fill:#d4edda,stroke:#28a745
-    style Z fill:#d4edda,stroke:#28a745
-    style C fill:#fff3cd,stroke:#ffc107
-    style M fill:#fff3cd,stroke:#ffc107
-    style H fill:#cce5ff,stroke:#007bff
-    style K fill:#cce5ff,stroke:#007bff
-    style N fill:#d4edda,stroke:#28a745
-    style O fill:#f8d7da,stroke:#dc3545
-    '''
+    L --> M[Break Ties by Higher Attendance]
+    M --> O[Break Remaining Ties by Lower Income]
+    O --> P[Display Eligibility and Rankings]
+    P --> Q([Stop])
+```
 ## 8. Conclusion
 
 The University Scholarship Allocation System automates the process of evaluating student scholarship applications. It checks eligibility using aggregate marks, subject-wise minimum marks, attendance, and family income. It ranks eligible students using predefined tie-breaking rules and explains why other applicants are ineligible. This system reduces manual work, improves consistency, and makes scholarship allocation easier to manage.
